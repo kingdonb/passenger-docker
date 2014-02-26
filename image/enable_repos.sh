@@ -3,6 +3,9 @@ set -e
 source /build/buildconfig
 set -x
 
+#apt-get --purge autoremove -y squid-deb-proxy-client
+echo 'Acquire::https::Proxy "http://squid.trusty.dev.docker:8000/";' >> /etc/apt/apt.conf.d/30manualproxy
+
 ## Brightbox Ruby 1.9.3 and 2.0.0
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C3173AA6
 echo deb http://ppa.launchpad.net/brightbox/ruby-ng/ubuntu precise main > /etc/apt/sources.list.d/brightbox.list
